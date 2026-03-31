@@ -6,11 +6,13 @@ Build Roblox games through an AI-powered, step-based workflow: describe your ide
 
 ```
 roflow-aidevelopment/
-├── web/              → Next.js + TypeScript frontend (port 3000)
-├── server/           → Express + TypeScript backend  (port 4000)
-├── plugin/           → Roblox Studio plugin (placeholder)
-├── claude-setup.md   → Vision doc — system goals & agent roles
-├── CLAUDE.md         → Project context for Claude Code
+├── web/                  → Next.js + TypeScript (frontend + API routes)
+│   └── src/app/api/      → Backend API (runs as Vercel serverless functions)
+├── server/               → Express backend (unused — for Railway migration later)
+├── plugin/               → Roblox Studio plugin (placeholder)
+├── claude-setup.md       → Vision doc — system goals & agent roles
+├── railway-migration.md  → Guide for splitting backend onto Railway
+├── CLAUDE.md             → Project context for Claude Code
 └── .gitignore
 ```
 
@@ -18,40 +20,48 @@ roflow-aidevelopment/
 
 - Node.js 20+
 - npm 10+
-- An Anthropic API key (for the server)
+- An Anthropic API key
 
 ## Setup
 
 ```bash
-# Install frontend dependencies
 cd web && npm install
+```
 
-# Install backend dependencies
-cd ../server && npm install
+## Environment Variables
 
-# Configure environment
-cp server/.env.example server/.env
-# Edit server/.env and add your ANTHROPIC_API_KEY
+Copy the example and add your key:
+
+```bash
+cp web/.env.example web/.env.local
+# Edit web/.env.local and set ANTHROPIC_API_KEY
 ```
 
 ## Development
 
-Run the frontend and backend in separate terminals:
-
 ```bash
-# Terminal 1 — Frontend (http://localhost:3000)
 cd web && npm run dev
-
-# Terminal 2 — Backend (http://localhost:4000)
-cd server && npm run dev
+# → http://localhost:3000       (frontend)
+# → http://localhost:3000/api/* (API routes)
 ```
 
-Verify the backend is running:
+Verify the API:
 
 ```bash
-curl http://localhost:4000/health
+curl http://localhost:3000/api/health
 # → {"status":"ok"}
 ```
+
+## Deployment (Vercel)
+
+1. Push this repo to GitHub
+2. Go to [vercel.com](https://vercel.com) → Import your repo
+3. Set **Root Directory** to `web`
+4. Add environment variable: `ANTHROPIC_API_KEY` = your key
+5. Deploy
+6. Add your custom domain in Project Settings → Domains
+
+See [railway-migration.md](railway-migration.md) if you later need to split the backend onto its own server.
 
 ## Architecture
 
