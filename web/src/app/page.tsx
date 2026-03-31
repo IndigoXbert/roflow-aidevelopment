@@ -1,9 +1,25 @@
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import VideoCarousel from "@/components/VideoCarousel";
+import Features from "@/components/Features";
+import Pricing from "@/components/Pricing";
+import ActionCards from "@/components/ActionCards";
+import FAQ from "@/components/FAQ";
+import FooterCTA from "@/components/FooterCTA";
+import Footer from "@/components/Footer";
+
 export default function Home() {
   return (
-    <main style={{ padding: "2rem", fontFamily: "sans-serif" }}>
-      <h1>RoFlow</h1>
-      <p>AI-driven Roblox game development platform.</p>
-      <p style={{ color: "#888" }}>Step 1: Idea Intake — coming soon.</p>
-    </main>
+    <>
+      <Navbar />
+      <Hero />
+      <VideoCarousel />
+      <ActionCards />
+      <Features />
+      <Pricing />
+      <FAQ />
+      <FooterCTA />
+      <Footer />
+    </>
   );
 }
