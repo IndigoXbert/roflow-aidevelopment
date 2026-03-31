@@ -6,11 +6,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-3">
-              <div className="w-7 h-7 bg-primary-600 rounded-lg flex items-center justify-center">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
-                </svg>
-              </div>
+              <img src="/logo.svg" alt="RoFlow" className="w-7 h-7" />
               <span className="font-bold text-gray-900">RoFlow</span>
             </div>
             <p className="text-sm text-gray-500 leading-relaxed">

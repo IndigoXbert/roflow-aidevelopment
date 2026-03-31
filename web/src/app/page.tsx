@@ -1,3 +1,4 @@
+import GridBackground from "@/components/GridBackground";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import VideoCarousel from "@/components/VideoCarousel";
@@ -11,6 +12,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      <GridBackground />
       <Navbar />
       <Hero />
       <VideoCarousel />

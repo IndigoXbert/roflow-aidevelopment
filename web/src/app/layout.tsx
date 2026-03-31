@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   title: "RoFlow — AI-Driven Roblox Development",
   description:
     "Build Roblox games with AI-powered workflows. From idea to playable game in minutes.",
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
